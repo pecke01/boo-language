@@ -1,12 +1,11 @@
 {
   "name": "language-boo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Atom package for Boo",
   "repository": "https://github.com/pecke01/boo-language",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
