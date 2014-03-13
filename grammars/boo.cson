@@ -1,0 +1,402 @@
+'comment': 'Based on the original Python bundle. Adapted by Adrian (adrian@sttz.ch).'
+'fileTypes': [
+  'boo'
+]
+'firstLineMatch': '^#!/.*\\bboo\\b'
+'foldingStartMarker': '^\\s*(\\w+\\s+)?(def|class|enum)\\s+([.a-zA-Z0-9_ <]+)\\s*(\\((.*)\\))?\\s*:|\\{\\s*$|\\(\\s*$|\\[\\s*$'
+'foldingStopMarker': '^\\s*$|^\\s*\\}|^\\s*\\]|^\\s*\\)|^\\s*"""\\s*$'
+'name': 'Boo'
+'patterns': [
+  {
+    'match': '(#|//).*$'
+    'name': 'comment.line.number-sign.boo'
+  }
+  {
+    'begin': '/\\*'
+    'end': '\\*/'
+    'name': 'comment.block.boo'
+  }
+  {
+    'match': '\\b(?i:(0x\\h*)L)'
+    'name': 'constant.numeric.integer.long.hexadecimal.boo'
+  }
+  {
+    'match': '\\b(?i:(0x\\h*))'
+    'name': 'constant.numeric.integer.hexadecimal.boo'
+  }
+  {
+    'match': '\\b(?i:(0[0-7]+)L)'
+    'name': 'constant.numeric.integer.long.octal.boo'
+  }
+  {
+    'match': '\\b(0[0-7]+)'
+    'name': 'constant.numeric.integer.octal.boo'
+  }
+  {
+    'match': '\\b(?i:(((\\d+(\\.(?=[^a-zA-Z_])\\d*)?|(?<=[^0-9a-zA-Z_])\\.\\d+)(e[\\-\\+]?\\d+)?))J)'
+    'name': 'constant.numeric.complex.boo'
+  }
+  {
+    'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
+    'name': 'constant.numeric.float.boo'
+  }
+  {
+    'match': '(?<=[^0-9a-zA-Z_])(?i:(\\.\\d+(e[\\-\\+]?\\d+)?))'
+    'name': 'constant.numeric.float.boo'
+  }
+  {
+    'match': '\\b(?i:(\\d+e[\\-\\+]?\\d+))'
+    'name': 'constant.numeric.float.boo'
+  }
+  {
+    'match': '\\b(?i:([1-9]+[0-9]*|0)L)'
+    'name': 'constant.numeric.integer.long.decimal.boo'
+  }
+  {
+    'match': '\\b([1-9]+[0-9]*|0)'
+    'name': 'constant.numeric.integer.decimal.boo'
+  }
+  {
+    'begin': '"'
+    'end': '"'
+    'name': 'string.quoted.double.boo'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escaped.untitled'
+      }
+    ]
+  }
+  {
+    'match': '\'.*\\\''
+    'name': 'string.quoted.single.boo'
+  }
+  {
+    'match': '\\b(true|false|null|this)\\b'
+    'name': 'constant.language.boo'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.import.boo'
+      '2':
+        'name': 'keyword.control.import.from.boo'
+    'match': '\\b(?:(import)|(from))\\b'
+  }
+  {
+    'comment': 'keywords that delimit flow blocks'
+    'match': '\\b(elif|else|except|finally|for|if|try|while|unless|ensure)\\b'
+    'name': 'keyword.control.flow.boo'
+  }
+  {
+    'comment': 'keywords that alter flow from within a block'
+    'match': '\\b(break|continue|pass|raise|return|yield)\\b'
+    'name': 'keyword.control.flow.boo'
+  }
+  {
+    'comment': 'keyword operators that evaluate to True or False'
+    'match': '\\b(and|in|is|not|or|isa)\\b'
+    'name': 'keyword.operator.logical.boo'
+  }
+  {
+    'match': '\\b(as)\\b'
+    'name': 'keyword.operator.boo'
+  }
+  {
+    'match': '\\b(public|protected|private|static|abstract|override|virtual)\\b'
+    'name': 'storage.modifier.boo'
+  }
+  {
+    'match': '<\\=|>\\=|\\=\\=|<|>|!\\='
+    'name': 'keyword.operator.comparison.boo'
+  }
+  {
+    'match': '\\+\\=|-\\=|\\*\\=|/\\=|%\\=|\\|\\=|\\^\\=|&\\=|>>\\=|<<\\=|\\*\\*\\='
+    'name': 'keyword.operator.assignment.augmented.boo'
+  }
+  {
+    'match': '\\+|\\-|\\*|\\*\\*|/|%|<<|>>|&|\\||\\^|~'
+    'name': 'keyword.operator.arithmetic.boo'
+  }
+  {
+    'match': '\\='
+    'name': 'keyword.operator.assignment.boo'
+  }
+  {
+    'begin': '(?x)(?=.*class\\b)^\\s*\n\t\t\t\t((?:\\b(?:public|protected|private|abstract)\\b\\s)*)\n\t\t\t\t(class)\\s+\n\t\t\t\t(?=[a-zA-Z_]\\w*\\s*\\(?)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.modifier.boo'
+      '2':
+        'name': 'storage.type.class.boo'
+      '3':
+        'name': 'entity.name.class.boo'
+    'end': '(\\))?\\s*(?:(\\:)|($\\n?))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.inheritance.end.boo'
+      '2':
+        'name': 'punctuation.section.class.begin.boo'
+      '3':
+        'name': 'invalid.illegal.missing-section-begin.boo'
+    'name': 'meta.class.boo'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'contentName': 'entity.name.class.boo'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#entity_name_class'
+          }
+        ]
+      }
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.inheritance.begin.boo'
+        'contentName': 'meta.class.inheritance.boo'
+        'end': '(?=\\)|:)'
+        'patterns': [
+          {
+            'begin': '(?<=\\(|,)\\s*'
+            'contentName': 'entity.other.inherited-class.boo'
+            'end': '\\s*(?:(,)|(?=\\)))'
+            'endCaptures':
+              '1':
+                'name': 'punctuation.separator.inheritance.boo'
+            'patterns': [
+              {
+                'include': '$self'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(?x)(?=.*interface\\b)^\\s*\n\t\t\t\t(interface)\\s+\n\t\t\t\t(?=[a-zA-Z_]\\w*\\s*\\(?)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.interface.boo'
+      '2':
+        'name': 'entity.name.class.boo'
+    'end': '(\\))?\\s*(?:(\\:)|($\\n?))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.inheritance.end.boo'
+      '2':
+        'name': 'punctuation.section.interface.begin.boo'
+      '3':
+        'name': 'invalid.illegal.missing-section-begin.boo'
+    'name': 'meta.interface.boo'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'contentName': 'entity.name.class.boo'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#entity_name_class'
+          }
+        ]
+      }
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.inheritance.begin.boo'
+        'contentName': 'meta.interface.inheritance.boo'
+        'end': '(?=\\)|:)'
+        'patterns': [
+          {
+            'begin': '(?<=\\(|,)\\s*'
+            'contentName': 'entity.other.inherited-class.boo'
+            'end': '\\s*(?:(,)|(?=\\)))'
+            'endCaptures':
+              '1':
+                'name': 'punctuation.separator.inheritance.boo'
+            'patterns': [
+              {
+                'include': '$self'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(?x)(?=.*def\\b)^\\s*\n\t\t\t\t((?:\\b(?:public|protected|private|abstract|static|virtual|override)\\b\\s)*)\n\t\t\t\t(def)\\s+\n\t\t\t\t(?=[A-Za-z_][A-Za-z0-9_]*\\s*\\()'
+    'beginCaptures':
+      '1':
+        'name': 'storage.modifier.boo'
+      '2':
+        'name': 'storage.type.function.boo'
+    'end': '\\s*\\:?($)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.function.begin.boo'
+    'name': 'meta.function.boo'
+    'patterns': [
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.parameters.begin.boo'
+        'contentName': 'meta.function.parameters.boo'
+        'end': '(\\))(?!\\s*,)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.parameters.end.boo'
+        'patterns': [
+          {
+            'begin': '\\b(ref\\s+)?([a-zA-Z_]\\w*)\\s*'
+            'beginCaptures':
+              '1':
+                'name': 'keyword.other.boo'
+              '2':
+                'name': 'variable.parameter.function.boo'
+            'end': '(?:(,)|(?=[\\n\\)]))'
+            'endCaptures':
+              '1':
+                'name': 'punctuation.separator.parameters.boo'
+            'patterns': [
+              {
+                'include': '#all_types'
+              }
+              {
+                'match': '\\b(as)\\b'
+                'name': 'keyword.other.boo'
+              }
+            ]
+          }
+        ]
+      }
+      {
+        'begin': '(?<=\\))\\s*(as)\\s*'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.other.boo'
+        'end': '(?=\\:|$)'
+        'patterns': [
+          {
+            'include': '#all_types'
+          }
+          {
+            'match': '\\b(as)\\b'
+            'name': 'keyword.other.boo'
+          }
+        ]
+      }
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'contentName': 'entity.name.function.boo'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#entity_name_function'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'include': '#all_types'
+  }
+  {
+    'include': '#all_functions'
+  }
+]
+'repository':
+  'all_functions':
+    'patterns': [
+      {
+        'include': '#builtin_functions'
+      }
+    ]
+  'all_types':
+    'patterns': [
+      {
+        'include': '#builtin_types'
+      }
+    ]
+  'builtin_constants':
+    'match': '(?i:\\b( BooVersion )\\b)'
+    'name': 'support.constant.boo'
+  'builtin_directives':
+    'match': '(?i:\\b( pragma|strict )\\b)'
+    'name': 'keyword.control.import.boo'
+  'builtin_functions':
+    'match': '(?x)\\b(\n                enumerate|gets|iterator|join|map|matrix|\n\t\t\t\tprint|prompt|range|reversed|shell|zip|cast\n\t\t\t)\\b'
+    'name': 'support.function.builtin.boo'
+  'builtin_types':
+    'match': '(?x)\\b(\n\t\t\t\tsbyte|short|int|long|byte|ushort|uint|ulong|single|double|decimal|char|bool|string|\n\t\t\t\tobject|array|enum|callable|Hash|List|duck\n\t\t\t)\\b'
+    'name': 'storage.type.boo'
+  'builtin_variables':
+    'match': '(?x)\\b(\n\t\t\t\tself|super\n\t\t\t)\\b'
+    'name': 'support.variable.boo'
+  'dotted_name':
+    'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)+)'
+    'end': '(?![A-Za-z0-9_\\.])'
+    'patterns': [
+      {
+        'begin': '(\\.)(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#illegal_names'
+          }
+          {
+            'include': '#generic_names'
+          }
+        ]
+      }
+      {
+        'begin': '(?<!\\.)(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#all_functions'
+          }
+          {
+            'include': '#all_types'
+          }
+          {
+            'include': '#illegal_names'
+          }
+          {
+            'include': '#language_variables'
+          }
+          {
+            'include': '#generic_names'
+          }
+        ]
+      }
+    ]
+  'entity_name_class':
+    'patterns': [
+      {
+        'include': '#illegal_names'
+      }
+      {
+        'include': '#generic_names'
+      }
+    ]
+  'entity_name_function':
+    'patterns': [
+      {
+        'include': '#illegal_names'
+      }
+      {
+        'include': '#generic_names'
+      }
+    ]
+  'generic_names':
+    'match': '[A-Za-z_][A-Za-z0-9_]*'
+  'illegal_names':
+    'match': '(?x)\\b(\n\t\t\t\tand|as|assert|break|class|continue|def|del|elif|else|except|exec|\n\t\t\t\tfinally|for|from|global|if|import|in|is|lambda|not|or|pass|print|\n\t\t\t\traise|return|try|while|with|yield\n\t\t\t)\\b'
+    'name': 'invalid.illegal.name.boo'
+'scopeName': 'source.boo'
